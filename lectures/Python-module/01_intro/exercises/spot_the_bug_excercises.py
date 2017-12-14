@@ -8,6 +8,8 @@ def spot_the_bug1():
     ########################
     # corrected fun here
     ########################
+    def define_methods():
+        return [lambda var, i=i: 2*var + i for i in range(10)]
 
     funs = define_methods()
     for i,f in enumerate(funs): 
@@ -23,7 +25,9 @@ def spot_the_bug2():
     ########################
     # corrected fun here
     ########################
-
+    def append_u_words(words, return_list=[]): # 'u' should be added to return_list when provided
+        return return_list + [word for word in words if word.startswith('u')]
+    
     assert append_u_words(["u_word", "not_u_word"])          == ['u_word']       , 'wrong word list - 1'
     assert append_u_words(["u_word", "not_u_word"],["word"]) == ['word','u_word'], 'wrong word list - 2'
     assert append_u_words(["under_control", "whatever"])     == ["under_control"], 'wrong word list - 3'
